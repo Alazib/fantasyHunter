@@ -1,13 +1,15 @@
 const allSquares = document.querySelectorAll(".square")
 
 const start = document.querySelector(".start")
+start.style.background = "yellowgreen"
 
 const spanPhase = document.querySelector(".span-phase")
 const spanRound = document.querySelector(".span-round")
 
-// const phasePanel = document.createElement("div")
-// phasePanel.className = "phase-panel"
-// .appendChild(phasePanel) 
+const finalBoss = document.createElement("img")
+finalBoss.style.width = "100px"
+finalBoss.style.height ="100px"
+finalBoss.src = "finalBoss.png"
 
 let round = 0
 
@@ -160,9 +162,17 @@ function loopPhaseTwo() {
 }
 
 function loopPhaseThree () {
+
+    finalBoss.style.visibility="visible"
+
+    allSquares[3].appendChild(finalBoss)
+    allSquares[4].appendChild(finalBoss)
+    allSquares[5].appendChild(finalBoss) 
+    //¿Por qué no añade el finalBoss a TODOS los cuadrados?     
 }
 
 function playerPhaseOne() {
+
 
     if (orderOfPlayerShoots.length === round) {
 
@@ -217,49 +227,48 @@ function playerPhaseOne() {
 
 function playerPhaseTwo() {
 
-    let lengthWhereReduce = 5
+    let lengthWhenReduce = 5
 
     switch (round) {
 
         case 3: {
 
-            lengthWhereReduce = 6
+            lengthWhenReduce = 6
         }
             break
 
         case 4: {
 
-            lengthWhereReduce = 6
+            lengthWhenReduce = 6
         }
             break
 
         case 5: {
 
-            lengthWhereReduce = 7
+            lengthWhenReduce = 7
         }
             break
 
         case 6: {
 
-            lengthWhereReduce = 7
+            lengthWhenReduce = 7
         }
             break
 
         case 7: {
 
-            lengthWhereReduce = 8
+            lengthWhenReduce = 8
         }
             break
 
         case 8: {
 
-            lengthWhereReduce = 8
+            lengthWhenReduce = 8
         }
             break
     }
 
-
-    if (orderOfPlayerShoots.length === lengthWhereReduce) {
+    if (orderOfPlayerShoots.length === lengthWhenReduce) {
 
         const orderOfPlayerShootsReduced = orderOfPlayerShoots.reduce((prev, current) => {
 
@@ -342,7 +351,7 @@ allSquares.forEach((square) => {
 
 
 
-start.style.background = "yellowgreen"
+
 
 
 
