@@ -1,0 +1,62 @@
+.stage {
+   border: thin solid black;
+   display: flex;
+   height: 200px;
+}
+
+
+.square {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    visibility: hidden;
+    color:white;
+
+}
+
+.one {
+    background-color: black;
+   
+}
+
+.two {
+    background-color: aqua;
+
+}
+
+.three {
+    background-color: sandybrown;
+  
+}
+
+.four {
+    background-color: yellowgreen;
+ 
+}
+
+.five {
+    background-color: red;
+}
+
+.six {
+    background-color: coral;
+}
+
+.seven {
+    background-color: chocolate;
+}
+
+.eight {
+    background-color: crimson;
+}
+
+
+.phase-panel {
+    background-color: brown;
+}
+
+span {
+    margin: 20px;
+    padding: 2px;
+    border: thin solid black;
+}
