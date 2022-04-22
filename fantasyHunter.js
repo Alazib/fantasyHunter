@@ -7,9 +7,12 @@ const spanPhase = document.querySelector(".span-phase")
 const spanRound = document.querySelector(".span-round")
 
 const finalBoss = document.createElement("img")
-finalBoss.style.width = "100px"
-finalBoss.style.height ="100px"
 finalBoss.src = "finalBoss.png"
+finalBoss.style.visibility = "visible"
+
+const flameGif = document.createElement("img")
+flameGif.src = "flameGif.gif"
+flameGif.style.visibility = "visible"
 
 let round = 0
 
@@ -17,16 +20,16 @@ let orderOfPlayerShoots = []
 
 let orderOfAppearance = []
 
-let phase = 0
+let phase = 3
+
+let gameIsRunning = false
 
 
 function randomize() {
 
     const randomNumber = Math.round((Math.random() * (allSquares.length - 1)))
 
-    const randomSquare = allSquares[randomNumber]
-
-    return randomSquare
+    return randomNumber
 }
 
 function loopPhaseOne() {
@@ -44,13 +47,14 @@ function loopPhaseOne() {
 
     for (let index = 0; index < round; index++) {
 
+
         setTimeout(() => {
 
-            let randomSquare = randomize()
+            let randomSquare = allSquares[randomize()]
 
             while (orderOfAppearance.includes(randomSquare.classList[1])) {
 
-                randomSquare = randomize()
+                randomSquare = allSquares[randomize()]
             }
 
             orderOfAppearance.push(randomSquare.classList[1])
@@ -61,6 +65,12 @@ function loopPhaseOne() {
 
         additionOfTimeToInterval += 1000
     }
+
+    setTimeout(() => {
+
+        gameIsRunning = false
+
+    }, 1500 + additionOfTimeToInterval);
 
     start.style.background = "orange"
 
@@ -73,9 +83,9 @@ function loopPhaseTwo() {
 
     round += 1
 
-    let i = 3
+    let loopControl = 3
 
-    let index = i
+    let index = loopControl
 
     let speedIncrease = 1000 - (1000 * 0.10)
 
@@ -91,57 +101,57 @@ function loopPhaseTwo() {
 
         case 3: {
 
-            i = 2
+            loopControl = 2
             speedIncrease = 1000 - (1000 * 0.15)
         }
             break
 
         case 4: {
 
-            i = 2
+            loopControl = 2
             speedIncrease = 1000 - (1000 * 0.15)
         }
             break
 
         case 5: {
 
-            i = 1
+            loopControl = 1
             speedIncrease = 1000 - (1000 * 0.20)
         }
             break
 
         case 6: {
 
-            i = 1
+            loopControl = 1
             speedIncrease = 1000 - (1000 * 0.20)
         }
             break
 
         case 7: {
 
-            i = 0
+            loopControl = 0
             speedIncrease = 1000 - (1000 * 0.25)
         }
             break
 
         case 8: {
 
-            i = 0
+            loopControl = 0
             speedIncrease = 1000 - (1000 * 0.25)
         }
             break
     }
 
 
-    for (index = i; index < 8; index++) {
+    for (index = loopControl; index < allSquares.length; index++) {
 
         setTimeout(() => {
 
-            let randomSquare = randomize()
+            let randomSquare = allSquares[randomize()]
 
             while (orderOfAppearance.includes(randomSquare.classList[1])) {
 
-                randomSquare = randomize()
+                randomSquare = allSquares[randomize()]
             }
 
             orderOfAppearance.push(randomSquare.classList[1])
@@ -153,6 +163,12 @@ function loopPhaseTwo() {
         additionOfTimeToInterval += speedIncrease
     }
 
+    setTimeout(() => {
+
+        gameIsRunning = false
+
+    }, 1500 + additionOfTimeToInterval);
+
     start.style.background = "orange"
 
     start.disabled = true
@@ -161,14 +177,67 @@ function loopPhaseTwo() {
 
 }
 
-function loopPhaseThree () {
+function loopPhaseThree() {
 
-    finalBoss.style.visibility="visible"
+    round = 0
 
-    allSquares[3].appendChild(finalBoss)
-    allSquares[4].appendChild(finalBoss)
-    allSquares[5].appendChild(finalBoss) 
-    //¿Por qué no añade el finalBoss a TODOS los cuadrados?     
+    let squareToAppendBoss = undefined
+
+    let additionOfTimeToInterval = 0
+
+    let squaresWithBossAppended = []
+
+    let newFlame = undefined
+
+    let pixel = 100
+
+    for (i = 0; i < 5; i++) {
+
+        setTimeout(() => {
+
+            squareToAppendBoss = allSquares[randomize()]
+
+            while (squaresWithBossAppended.includes(squareToAppendBoss)) {
+
+                squareToAppendBoss = allSquares[randomize()]
+            }
+
+            squareToAppendBoss.appendChild(finalBoss)
+
+            squaresWithBossAppended.push(squareToAppendBoss)
+
+            finalBoss.style.width = `${pixel}px`
+
+            finalBoss.style.height = `${pixel}px`
+  
+
+        }, 1000 + additionOfTimeToInterval)
+
+
+        setTimeout(() => {
+
+            squareToAppendBoss.removeChild(finalBoss)
+
+            newFlame = flameGif.cloneNode(true) /*¿Porqué no pongo aquí lineas 15 a 19 en vez de hacer un clon del nodo? Tal cual está, solo he creado el nodo 
+            flameGif para clonarlo sucesivamente en esta linea*/
+            newFlame.style.width = `${pixel}px`
+
+            newFlame.style.height = `${pixel}px`
+
+            squareToAppendBoss.appendChild(newFlame)
+
+            pixel += 70
+
+        }, 2000 + additionOfTimeToInterval)
+
+        additionOfTimeToInterval += 3000
+
+    }
+
+
+  
+
+
 }
 
 function playerPhaseOne() {
@@ -215,7 +284,6 @@ function playerPhaseOne() {
             spanPhase.textContent = "PHASE 2"
 
             spanRound.textContent = `ROUND ${round + 1}`
-
 
 
         }
@@ -320,14 +388,23 @@ function playerPhaseTwo() {
 
 }
 
+function playerPhaseThree () {
+
+
+console.log("Click")
+
+
+}
+
 start.addEventListener(("click"), () => {
 
+    gameIsRunning = true
 
     if (phase === 0 || phase === 1) loopPhaseOne()
 
     if (phase === 2) loopPhaseTwo()
 
-    if (phase === 3) loopPhaseThree ()
+    if (phase === 3) loopPhaseThree()
 
 })
 
@@ -336,6 +413,8 @@ allSquares.forEach((square) => {
 
     square.addEventListener(("click"), () => {
 
+        if (gameIsRunning) return
+
         square.style.visibility = "hidden"
 
         orderOfPlayerShoots.push(square.classList[1])
@@ -343,10 +422,12 @@ allSquares.forEach((square) => {
         if (phase === 1) playerPhaseOne()
 
         if (phase === 2) playerPhaseTwo()
-
-
-
     })
+})
+
+finalBoss.addEventListener(("click"), ()=> {
+
+    if (phase === 3) playerPhaseThree()
 })
 
 

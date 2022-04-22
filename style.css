@@ -5,6 +5,11 @@
 }
 
 
+body {
+    max-width: 1500px;
+    height: 100%;
+}
+
 .square {
     width: 100px;
     height: 100px;
