@@ -60,3 +60,8 @@ span {
     padding: 2px;
     border: thin solid black;
 }
+
+.health-boss,
+.health-player {
+    visibility: hidden;
+}
