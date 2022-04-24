@@ -5,6 +5,11 @@
 }
 
 
+body {
+    max-width: 1500px;
+    height: 100%;
+}
+
 .square {
     width: 100px;
     height: 100px;
@@ -54,4 +59,9 @@ span {
     margin: 20px;
     padding: 2px;
     border: thin solid black;
+}
+
+.health-boss,
+.health-player {
+    visibility: hidden;
 }

@@ -3,15 +3,24 @@ const allSquares = document.querySelectorAll(".square")
 const start = document.querySelector(".start")
 start.style.background = "yellowgreen"
 
-const spanPhase = document.querySelector(".span-phase")
-const spanRound = document.querySelector(".span-round")
+const spanPhase = document.querySelector(".phase")
+const spanRound = document.querySelector(".round")
+const spanHealthBoss = document.querySelector(".health-boss")
+const spanHealthPlayer = document.querySelector(".health-player")
+
+const body = document.querySelector("body")
 
 const finalBoss = document.createElement("img")
-finalBoss.style.width = "100px"
-finalBoss.style.height ="100px"
 finalBoss.src = "finalBoss.png"
+finalBoss.style.visibility = "visible"
+
+const flameGif = document.createElement("img")
+flameGif.src = "flameGif.gif"
+flameGif.style.visibility = "visible"
 
 let round = 0
+
+let maxRounds = allSquares.length
 
 let orderOfPlayerShoots = []
 
@@ -19,14 +28,20 @@ let orderOfAppearance = []
 
 let phase = 0
 
+let gameIsRunning = false
+
+let timesFinalBossShooted = 0
+
+let bossHealth = 60
+
+let playerHealth = 60
+
 
 function randomize() {
 
     const randomNumber = Math.round((Math.random() * (allSquares.length - 1)))
 
-    const randomSquare = allSquares[randomNumber]
-
-    return randomSquare
+    return randomNumber
 }
 
 function loopPhaseOne() {
@@ -41,16 +56,16 @@ function loopPhaseOne() {
 
     let additionOfTimeToInterval = 0
 
-
     for (let index = 0; index < round; index++) {
+
 
         setTimeout(() => {
 
-            let randomSquare = randomize()
+            let randomSquare = allSquares[randomize()]
 
             while (orderOfAppearance.includes(randomSquare.classList[1])) {
 
-                randomSquare = randomize()
+                randomSquare = allSquares[randomize()]
             }
 
             orderOfAppearance.push(randomSquare.classList[1])
@@ -62,10 +77,13 @@ function loopPhaseOne() {
         additionOfTimeToInterval += 1000
     }
 
-    start.style.background = "orange"
+    setTimeout(() => {
 
-    start.disabled = true
+        gameIsRunning = false
 
+    }, additionOfTimeToInterval);
+
+    
 
 }
 
@@ -73,9 +91,9 @@ function loopPhaseTwo() {
 
     round += 1
 
-    let i = 3
+    let loopControl = 3
 
-    let index = i
+    let index = loopControl
 
     let speedIncrease = 1000 - (1000 * 0.10)
 
@@ -91,57 +109,57 @@ function loopPhaseTwo() {
 
         case 3: {
 
-            i = 2
+            loopControl = 2
             speedIncrease = 1000 - (1000 * 0.15)
         }
             break
 
         case 4: {
 
-            i = 2
+            loopControl = 2
             speedIncrease = 1000 - (1000 * 0.15)
         }
             break
 
         case 5: {
 
-            i = 1
+            loopControl = 1
             speedIncrease = 1000 - (1000 * 0.20)
         }
             break
 
         case 6: {
 
-            i = 1
+            loopControl = 1
             speedIncrease = 1000 - (1000 * 0.20)
         }
             break
 
         case 7: {
 
-            i = 0
+            loopControl = 0
             speedIncrease = 1000 - (1000 * 0.25)
         }
             break
 
         case 8: {
 
-            i = 0
+            loopControl = 0
             speedIncrease = 1000 - (1000 * 0.25)
         }
             break
     }
 
 
-    for (index = i; index < 8; index++) {
+    for (index = loopControl; index < allSquares.length; index++) {
 
         setTimeout(() => {
 
-            let randomSquare = randomize()
+            let randomSquare = allSquares[randomize()]
 
             while (orderOfAppearance.includes(randomSquare.classList[1])) {
 
-                randomSquare = randomize()
+                randomSquare = allSquares[randomize()]
             }
 
             orderOfAppearance.push(randomSquare.classList[1])
@@ -153,22 +171,156 @@ function loopPhaseTwo() {
         additionOfTimeToInterval += speedIncrease
     }
 
-    start.style.background = "orange"
+    setTimeout(() => {
 
-    start.disabled = true
+        gameIsRunning = false
 
+    }, additionOfTimeToInterval);
 
 
 }
 
-function loopPhaseThree () {
+function loopPhaseThree() {
 
-    finalBoss.style.visibility="visible"
+    spanHealthBoss.style.visibility = "visible"
 
-    allSquares[3].appendChild(finalBoss)
-    allSquares[4].appendChild(finalBoss)
-    allSquares[5].appendChild(finalBoss) 
-    //¿Por qué no añade el finalBoss a TODOS los cuadrados?     
+    spanHealthPlayer.style.visibility = "visible"
+
+    spanHealthBoss.textContent =`FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
+
+    spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
+
+    round += 1
+
+    let numberOfBossApparitions = 5
+
+    let squareToAppendBoss = undefined
+
+    let additionOfTimeToInterval = 0
+
+    let speedIncrease = 2000
+
+    let squaresWithBossAppended = []
+
+    let newFlame = flameGif.cloneNode(true)
+
+    let pixel = 100
+
+    let bossLoop = () => {
+
+        for (i = 0; i < numberOfBossApparitions; i++) {
+
+            setTimeout(() => {
+
+                squareToAppendBoss = allSquares[randomize()]
+
+                while (squaresWithBossAppended.includes(squareToAppendBoss)) {
+
+                    squareToAppendBoss = allSquares[randomize()]
+                }
+
+                squareToAppendBoss.appendChild(finalBoss)
+
+                squaresWithBossAppended.push(squareToAppendBoss)
+
+                finalBoss.style.width = `${pixel}px`
+
+                finalBoss.style.height = `${pixel}px`
+
+
+            }, 1000 + additionOfTimeToInterval)
+
+
+            setTimeout(() => {
+
+                squareToAppendBoss.removeChild(finalBoss)
+
+                newFlame.style.width = `${pixel}px`
+
+                newFlame.style.height = `${pixel}px`
+
+                squareToAppendBoss.appendChild(newFlame)
+
+                pixel += 70
+
+                if (squaresWithBossAppended.length === 5) {
+
+                    body.style.background ="red"
+                }
+
+            }, 2000 + additionOfTimeToInterval)
+
+
+            additionOfTimeToInterval += speedIncrease
+
+
+        }
+
+        setTimeout(() => {
+
+            body.style.background = "white"
+
+            playerHealth -= 10
+
+            spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
+
+            squareToAppendBoss.removeChild(newFlame)
+
+            if (playerHealth === 0) {
+                
+                alert("You Lose")
+
+                start.disabled = false
+
+                start.style.background = "crimson"
+
+                start.textContent ="PRESS TO TRY AGAIN"
+
+                round = 0
+
+                bossHealth = 60
+
+                playerHealth = 60
+
+                timesFinalBossShooted = 0
+
+                return
+            
+            }
+
+            start.disabled = false
+
+            start.style.background ="greenyellow"
+
+            start.textContent = "CONTINUE"
+
+            spanRound.textContent = `ROUND ${round +1}`
+
+
+        }, 2500 + additionOfTimeToInterval);
+
+
+    }
+
+    if (round === 1 || round === 2) {
+
+        bossLoop()
+    }
+
+    if (round === 3 || round === 4) {
+
+        speedIncrease = 1500
+
+        bossLoop()
+    }
+
+    if (round === 5 || round === 6) {
+
+        speedIncrease = 1000
+
+        bossLoop()
+    }
+
 }
 
 function playerPhaseOne() {
@@ -204,7 +356,7 @@ function playerPhaseOne() {
         }
 
 
-        if (round === allSquares.length) {
+        if (round === maxRounds) {
 
             alert("FASE 1 COMPLETADA")
 
@@ -215,7 +367,6 @@ function playerPhaseOne() {
             spanPhase.textContent = "PHASE 2"
 
             spanRound.textContent = `ROUND ${round + 1}`
-
 
 
         }
@@ -298,7 +449,7 @@ function playerPhaseTwo() {
         }
 
 
-        if (round === allSquares.length) {
+        if (round === maxRounds) {
 
             alert("FASE 2 COMPLETADA")
 
@@ -316,18 +467,35 @@ function playerPhaseTwo() {
 
     }
 
+}
 
+function playerPhaseThree() {
+
+    timesFinalBossShooted += 1
+
+    spanHealthBoss.textContent =`FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
+
+    if ((bossHealth - timesFinalBossShooted) === 0) {
+
+        alert("YOU WIN")
+
+    }
 
 }
 
 start.addEventListener(("click"), () => {
 
+    gameIsRunning = true
+
+    start.disabled = true
+   
+    start.style.background = "orange"
 
     if (phase === 0 || phase === 1) loopPhaseOne()
 
     if (phase === 2) loopPhaseTwo()
 
-    if (phase === 3) loopPhaseThree ()
+    if (phase === 3) loopPhaseThree()
 
 })
 
@@ -336,6 +504,8 @@ allSquares.forEach((square) => {
 
     square.addEventListener(("click"), () => {
 
+        if (gameIsRunning) return
+
         square.style.visibility = "hidden"
 
         orderOfPlayerShoots.push(square.classList[1])
@@ -343,10 +513,12 @@ allSquares.forEach((square) => {
         if (phase === 1) playerPhaseOne()
 
         if (phase === 2) playerPhaseTwo()
-
-
-
     })
+})
+
+finalBoss.addEventListener(("click"), () => {
+
+    if (phase === 3) playerPhaseThree()
 })
 
 
