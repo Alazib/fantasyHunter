@@ -10,6 +10,8 @@ const spanHealthPlayer = document.querySelector(".health-player")
 
 const body = document.querySelector("body")
 
+const shoot = document.querySelector(".shoot")
+
 const finalBoss = document.createElement("img")
 finalBoss.src = "finalBoss.png"
 finalBoss.style.visibility = "visible"
@@ -26,7 +28,7 @@ let orderOfPlayerShoots = []
 
 let orderOfAppearance = []
 
-let phase = 0
+let phase = 2
 
 let gameIsRunning = false
 
@@ -521,6 +523,11 @@ allSquares.forEach((square) => {
 finalBoss.addEventListener(("click"), () => {
 
     if (phase === 3) playerPhaseThree()
+})
+
+body.addEventListener(("click"), () =>{
+
+    shoot.play()
 })
 
 

@@ -1,65 +1,90 @@
-.stage {
-   border: thin solid black;
-   display: flex;
-   height: 200px;
-}
-
 
 body {
-    max-width: 1500px;
-    height: 100%;
-}
-
-.square {
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    visibility: hidden;
-    color:white;
-
-}
-
-.one {
-    background-color: black;
-   
-}
-
-.two {
-    background-color: aqua;
-
-}
-
-.three {
-    background-color: sandybrown;
-  
-}
-
-.four {
-    background-color: yellowgreen;
- 
-}
-
-.five {
-    background-color: red;
-}
-
-.six {
-    background-color: coral;
-}
-
-.seven {
-    background-color: chocolate;
-}
-
-.eight {
-    background-color: crimson;
+    background-image: url(Stages/Jungle.jpg);
 }
 
 span {
-    margin: 20px;
-    padding: 2px;
-    border: thin solid black;
+    color: white;
+    border: thin solid whitesmoke;
+    margin: 5px;
+    padding: 5px;
 }
+
+.square {
+    visibility: hidden;
+}
+
+.fish
+{
+    position: absolute;
+    top: 590px;
+    left: 290px; 
+    width: 80px;
+    height: 80px;
+}
+
+.tucan {
+    position: absolute;
+    top: 50px;
+    left: 800px;
+    width: 100px;
+    height: 100px;
+}
+
+.crocodile {
+    position: absolute;
+    top: 330px;
+    left: 700px;
+    height: 80px;
+    width: 160px;
+    transform: rotate(20deg);   
+}
+
+.jaguar {
+    position: absolute;
+    top: 250px;
+    left: 400px;
+    height: 120px;
+    width: 170px;
+}
+
+.hippo {
+    position: absolute;
+    top: 400px;
+    left: 1200px; 
+    width: 250px;
+    height: 250px;
+   
+}
+
+.macaque {
+    position: absolute;
+    top: 230px;
+    right: 450px;
+    width: 80px;
+    height: 140px;
+}
+
+.anaconda {
+    position: absolute;
+    top: 450px;
+    left: 860px;
+    width: 300px;
+    height: 150px;
+
+}
+
+.owl {
+    position: absolute;
+    top: 150px;
+    left: 60px;
+    height: 100px;
+    width: 80px;
+}
+
+
+
+
 
 .health-boss,
 .health-player {
