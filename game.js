@@ -28,7 +28,7 @@ let orderOfPlayerShoots = []
 
 let orderOfAppearance = []
 
-let phase = 2
+let phase = 0
 
 let gameIsRunning = false
 

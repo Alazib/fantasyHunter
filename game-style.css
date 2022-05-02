@@ -1,6 +1,6 @@
 
 body {
-    background-image: url(Stages/Jungle.jpg);
+    background-image: url(Stages/Jungle/Jungle.jpg);
 }
 
 span {
@@ -11,7 +11,7 @@ span {
 }
 
 .square {
-    visibility: hidden;
+    visibility:hidden;
 }
 
 .fish
@@ -33,19 +33,19 @@ span {
 
 .crocodile {
     position: absolute;
-    top: 330px;
-    left: 700px;
-    height: 80px;
-    width: 160px;
+    top: 350px;
+    left: 600px;
+    height: 60px;
+    width: 190px;
     transform: rotate(20deg);   
 }
 
 .jaguar {
     position: absolute;
     top: 250px;
-    left: 400px;
+    left: 350px;
     height: 120px;
-    width: 170px;
+    width: 200px;
 }
 
 .hippo {
@@ -60,7 +60,7 @@ span {
 .macaque {
     position: absolute;
     top: 230px;
-    right: 450px;
+    left: 1030px;
     width: 80px;
     height: 140px;
 }
