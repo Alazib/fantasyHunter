@@ -5,3 +5,4 @@ button.addEventListener(("click"), () => {
 
     shoot.play()
 })
+
