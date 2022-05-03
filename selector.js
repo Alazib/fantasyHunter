@@ -35,6 +35,12 @@ allCharacters.forEach((character) => {
         player.character = character
         characterSelected.textContent = player.character.className
         characterSelected.style.background = "yellow"
+        characterSelected.classList.add("shake")
+        
+        setTimeout(() => {
+            characterSelected.classList.remove("shake")
+        }, 100);
+        
     })
 })
 
@@ -56,6 +62,13 @@ allWeapons.forEach((weapon) => {
         player.weapon = weapon
         weaponSelected.textContent = player.weapon.className
         weaponSelected.style.background = "aqua"
+
+        weaponSelected.classList.add("shake")
+        
+        setTimeout(() => {
+            weaponSelected.classList.remove("shake")
+        }, 100);
+        
     })
 })
 
