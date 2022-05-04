@@ -1,7 +1,10 @@
 
 body {
     background-image: url(Stages/Jungle/Jungle.jpg);
+    cursor: url(scope.cur);
+    
 }
+
 
 span {
     color: white;
@@ -11,7 +14,7 @@ span {
 }
 
 .square {
-    visibility:hidden;
+    visibility: hidden;
 }
 
 .fish

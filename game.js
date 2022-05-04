@@ -38,6 +38,8 @@ let bossHealth = 60
 
 let playerHealth = 60
 
+const FB1 = document.querySelector(".FB1")
+
 
 function randomize() {
 
@@ -228,6 +230,8 @@ function loopPhaseThree() {
                 finalBoss.style.width = `${pixel}px`
 
                 finalBoss.style.height = `${pixel}px`
+
+                
 
 
             }, 1000 + additionOfTimeToInterval)
@@ -487,6 +491,7 @@ function playerPhaseThree() {
 
 }
 
+
 start.addEventListener(("click"), () => {
 
     gameIsRunning = true
@@ -503,12 +508,15 @@ start.addEventListener(("click"), () => {
 
 })
 
+
 allSquares.forEach((square) => {
 
 
     square.addEventListener(("click"), () => {
 
         if (gameIsRunning) return
+
+        shoot.play()
 
         square.style.visibility = "hidden"
 
@@ -525,10 +533,7 @@ finalBoss.addEventListener(("click"), () => {
     if (phase === 3) playerPhaseThree()
 })
 
-body.addEventListener(("click"), () =>{
 
-    shoot.play()
-})
 
 
 
