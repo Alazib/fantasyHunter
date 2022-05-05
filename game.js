@@ -1,6 +1,6 @@
-const allSquares = document.querySelectorAll(".square")
+const allImages = document.querySelectorAll(".image")
 
-const allBoss = document.querySelectorAll(".boss")
+const allDivsBoss = document.querySelectorAll(".boss")
 
 const start = document.querySelector(".start")
 start.style.background = "yellowgreen"
@@ -14,17 +14,20 @@ const body = document.querySelector("body")
 
 const shoot = document.querySelector(".shoot")
 
+const eagleCry = document.querySelector(".eagle")
+
+const bossStaring = document.createElement("img")
+bossStaring.src = "Boss Head.png"
+bossStaring.style.visibility = "visible"
+
 const finalBoss = document.createElement("img")
-finalBoss.src = "finalBoss.png"
+finalBoss.src = "Boss Front.png"
 finalBoss.style.visibility = "visible"
 
-const flameGif = document.createElement("img")
-flameGif.src = "flameGif.gif"
-flameGif.style.visibility = "visible"
 
 let round = 0
 
-let maxRounds = allSquares.length
+let maxRounds = allImages.length
 
 let orderOfPlayerShoots = []
 
@@ -38,14 +41,14 @@ let timesFinalBossShooted = 0
 
 let bossHealth = 60
 
-let playerHealth = 60
+let playerHealth = 50
 
 const FB1 = document.querySelector(".FB1")
 
 
 function randomize() {
 
-    const randomNumber = Math.round((Math.random() * (allSquares.length - 1)))
+    const randomNumber = Math.round((Math.random() * (allImages.length - 1)))
 
     return randomNumber
 }
@@ -67,16 +70,16 @@ function loopPhaseOne() {
 
         setTimeout(() => {
 
-            let randomSquare = allSquares[randomize()]
+            let randomImage = allImages[randomize()]
 
-            while (orderOfAppearance.includes(randomSquare.classList[1])) {
+            while (orderOfAppearance.includes(randomImage.classList[1])) {
 
-                randomSquare = allSquares[randomize()]
+                randomImage = allImages[randomize()]
             }
 
-            orderOfAppearance.push(randomSquare.classList[1])
+            orderOfAppearance.push(randomImage.classList[1])
 
-            randomSquare.style.visibility = "visible"
+            randomImage.style.visibility = "visible"
 
         }, 1000 + additionOfTimeToInterval)
 
@@ -157,20 +160,20 @@ function loopPhaseTwo() {
     }
 
 
-    for (index = loopControl; index < allSquares.length; index++) {
+    for (index = loopControl; index < allImages.length; index++) {
 
         setTimeout(() => {
 
-            let randomSquare = allSquares[randomize()]
+            let randomImage = allImages[randomize()]
 
-            while (orderOfAppearance.includes(randomSquare.classList[1])) {
+            while (orderOfAppearance.includes(randomImage.classList[1])) {
 
-                randomSquare = allSquares[randomize()]
+                randomImage = allImages[randomize()]
             }
 
-            orderOfAppearance.push(randomSquare.classList[1])
+            orderOfAppearance.push(randomImage.classList[1])
 
-            randomSquare.style.visibility = "visible"
+            randomImage.style.visibility = "visible"
 
         }, 1000 + additionOfTimeToInterval)
 
@@ -196,19 +199,20 @@ function loopPhaseThree() {
 
     spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
 
+
+
+
     round += 1
 
-    let numberOfBossApparitions = 5
+    let numberOfBossApparitions = 6
 
-    let squareToAppendBoss = undefined
+    let divToAppendBoss = undefined
 
     let additionOfTimeToInterval = 0
 
     let speedIncrease = 2000
 
-    let squaresWithBossAppended = []
-
-    let newFlame = flameGif.cloneNode(true)
+    let divWithBossAppended = []
 
     let pixel = 100
 
@@ -218,61 +222,47 @@ function loopPhaseThree() {
 
             setTimeout(() => {
 
-                squareToAppendBoss = allSquares[randomize()]
+                divToAppendBoss = allDivsBoss[Math.round((Math.random() * (allDivsBoss.length - 1)))]
 
-                while (squaresWithBossAppended.includes(squareToAppendBoss)) {
+                while (divWithBossAppended.includes(divToAppendBoss)) {
 
-                    squareToAppendBoss = allSquares[randomize()]
+                    divToAppendBoss = allDivsBoss[Math.round((Math.random() * (allDivsBoss.length - 1)))]
                 }
 
-                squareToAppendBoss.appendChild(finalBoss)
+                divToAppendBoss.appendChild(finalBoss)
 
-                squaresWithBossAppended.push(squareToAppendBoss)
+                divWithBossAppended.push(divToAppendBoss)
 
-                finalBoss.style.width = `${pixel}px`
+                finalBoss.style.width = `${pixel*2}px`
 
                 finalBoss.style.height = `${pixel}px`
-
-                
-
 
             }, 1000 + additionOfTimeToInterval)
 
 
             setTimeout(() => {
 
-                squareToAppendBoss.removeChild(finalBoss)
-
-                newFlame.style.width = `${pixel}px`
-
-                newFlame.style.height = `${pixel}px`
-
-                squareToAppendBoss.appendChild(newFlame)
+                divToAppendBoss.removeChild(finalBoss)
 
                 pixel += 70
 
-                if (squaresWithBossAppended.length === 5) {
+                if (divWithBossAppended.length === 6) {
 
-                    body.style.background ="red"
+                    alert("TE QUITO VIDA")
                 }
 
             }, 2000 + additionOfTimeToInterval)
 
 
             additionOfTimeToInterval += speedIncrease
-
-
         }
 
-        setTimeout(() => {
 
-            body.style.background = "white"
+        setTimeout(() => {
 
             playerHealth -= 10
 
             spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
-
-            squareToAppendBoss.removeChild(newFlame)
 
             if (playerHealth === 0) {
                 
@@ -469,7 +459,7 @@ function playerPhaseTwo() {
 
             spanRound.textContent = `ROUND ${round + 1}`
 
-
+            
 
         }
 
@@ -511,18 +501,18 @@ start.addEventListener(("click"), () => {
 })
 
 
-allSquares.forEach((square) => {
+allImages.forEach((image) => {
 
 
-    square.addEventListener(("click"), () => {
+    image.addEventListener(("click"), () => {
 
         if (gameIsRunning) return
 
         shoot.play()
 
-        square.style.visibility = "hidden"
+        image.style.visibility = "hidden"
 
-        orderOfPlayerShoots.push(square.classList[1])
+        orderOfPlayerShoots.push(image.classList[1])
 
         if (phase === 1) playerPhaseOne()
 
@@ -546,8 +536,11 @@ finalBoss.addEventListener(("click"), () => {
 
 
 
+const bossThreat = "X"
 
 
 
 
+allDivsBoss[2].appendChild(bossStaring)
 
+   eagleCry.play()
