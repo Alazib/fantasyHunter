@@ -1,5 +1,7 @@
 const allSquares = document.querySelectorAll(".square")
 
+const allBoss = document.querySelectorAll(".boss")
+
 const start = document.querySelector(".start")
 start.style.background = "yellowgreen"
 

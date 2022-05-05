@@ -1,7 +1,7 @@
 
 body {
     background-image: url(Stages/Jungle/Jungle.jpg);
-    cursor: url(scope.cur);
+    cursor: url(scope.png), crosshair;
     
 }
 
@@ -92,4 +92,46 @@ span {
 .health-boss,
 .health-player {
     visibility: hidden;
+}
+
+.boss{
+    border: thin solid red;
+    width: 10px;
+    height: 10px;  
+}
+
+.one {
+    position: absolute;
+    left: 1000px;
+    top: 100px;
+
+}
+
+.two {
+    position: absolute;
+    left: 500px ;
+}
+
+.three{
+    position: absolute;
+    left: 250px;
+    top: 300px;
+}
+
+.four {
+    position: absolute;
+    left: 350px;
+    top: 500px;
+}
+
+.five {
+    position: absolute;
+    left: 900px;
+    top: 450px ;
+}
+
+.six {
+    position: absolute;
+    left: 1300px; 
+    top: 400px;
 }

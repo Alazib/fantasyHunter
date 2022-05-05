@@ -7,15 +7,14 @@ const goToGame = document.querySelector(".go-to-game")
 
 const player = {
 
-    playerName: undefined,
+    playerName: "",
 
-    character: undefined,
+    character: "",
 
-    weapon: undefined,
+    weapon: "",
 
-    ranking: undefined
+    ranking: ""
 }
-
 
 allCharacters.forEach((character) => {
 
@@ -79,6 +78,7 @@ goToGame.addEventListener(("click"), ()=> {
 
     
 })
+
 
 
 

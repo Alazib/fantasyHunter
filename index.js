@@ -18,7 +18,7 @@ button.addEventListener(("click"), () => {
 
         window.location = "selector.html"
 
-    }, 2500);
+    }, 3000);
 
 
 
