@@ -96,6 +96,8 @@ span {
 }
 
 .boss{
+    border: thin solid red;
+    visibility: hidden;
     width: 10px;
     height: 10px;  
 }

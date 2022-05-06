@@ -20,6 +20,10 @@ const bossStaring = document.createElement("img")
 bossStaring.src = "Boss Head.png"
 bossStaring.style.visibility = "visible"
 
+const bossProfile = document.createElement("img")
+bossProfile.src = "Boss Profile.png"
+bossProfile.style.visibility = "visible"
+
 const finalBoss = document.createElement("img")
 finalBoss.src = "Boss Front.png"
 finalBoss.style.visibility = "visible"
@@ -41,10 +45,52 @@ let timesFinalBossShooted = 0
 
 let bossHealth = 60
 
-let playerHealth = 50
+let playerHealth = 60
 
 const FB1 = document.querySelector(".FB1")
 
+
+function finalBossThreat() {
+    
+    setTimeout(() => {
+
+    allDivsBoss[1].appendChild(bossProfile)
+
+    bossProfile.className = "slideRight"
+
+    setTimeout(() => {
+
+        bossProfile.className = "zoomerOut"
+
+    }, 2000);
+
+    setTimeout(() => {
+
+        allDivsBoss[0].appendChild(bossStaring)
+        bossStaring.className = "slideUp"
+
+    }, 3000);
+
+    setTimeout(() => {
+
+        bossStaring.className = "fadeOut"
+
+    }, 6000)
+
+    setTimeout(() => {
+
+        allDivsBoss[1].removeChild(bossProfile)
+
+        allDivsBoss[0].removeChild(bossStaring)
+
+
+
+    }, 7000);
+
+}, 1000)
+
+eagleCry.play()
+}
 
 function randomize() {
 
@@ -54,7 +100,7 @@ function randomize() {
 }
 
 function loopPhaseOne() {
-
+    
     phase = 1
 
     round += 1
@@ -92,7 +138,7 @@ function loopPhaseOne() {
 
     }, additionOfTimeToInterval);
 
-    
+
 
 }
 
@@ -195,22 +241,19 @@ function loopPhaseThree() {
 
     spanHealthPlayer.style.visibility = "visible"
 
-    spanHealthBoss.textContent =`FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
+    spanHealthBoss.textContent = `FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
 
-    spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
-
-
-
+    spanHealthPlayer.textContent = `PLAYER HEALTH: ${playerHealth}`
 
     round += 1
 
-    let numberOfBossApparitions = 6
+    let numberOfBossApparitions = 5
 
     let divToAppendBoss = undefined
 
     let additionOfTimeToInterval = 0
 
-    let speedIncrease = 2000
+    let speedIncrease = 1500
 
     let divWithBossAppended = []
 
@@ -233,7 +276,7 @@ function loopPhaseThree() {
 
                 divWithBossAppended.push(divToAppendBoss)
 
-                finalBoss.style.width = `${pixel*2}px`
+                finalBoss.style.width = `${pixel * 2}px`
 
                 finalBoss.style.height = `${pixel}px`
 
@@ -246,7 +289,7 @@ function loopPhaseThree() {
 
                 pixel += 70
 
-                if (divWithBossAppended.length === 6) {
+                if (divWithBossAppended.length === 5) {
 
                     alert("TE QUITO VIDA")
                 }
@@ -262,17 +305,17 @@ function loopPhaseThree() {
 
             playerHealth -= 10
 
-            spanHealthPlayer.textContent =`PLAYER HEALTH: ${playerHealth}`
+            spanHealthPlayer.textContent = `PLAYER HEALTH: ${playerHealth}`
 
             if (playerHealth === 0) {
-                
+
                 alert("You Lose")
 
                 start.disabled = false
 
                 start.style.background = "crimson"
 
-                start.textContent ="PRESS TO TRY AGAIN"
+                start.textContent = "PRESS TO TRY AGAIN"
 
                 round = 0
 
@@ -283,16 +326,16 @@ function loopPhaseThree() {
                 timesFinalBossShooted = 0
 
                 return
-            
+
             }
 
             start.disabled = false
 
-            start.style.background ="greenyellow"
+            start.style.background = "greenyellow"
 
             start.textContent = "CONTINUE"
 
-            spanRound.textContent = `ROUND ${round +1}`
+            spanRound.textContent = `ROUND ${round + 1}`
 
 
         }, 2500 + additionOfTimeToInterval);
@@ -300,24 +343,14 @@ function loopPhaseThree() {
 
     }
 
-    if (round === 1 || round === 2) {
-
-        bossLoop()
-    }
-
-    if (round === 3 || round === 4) {
-
-        speedIncrease = 1500
-
-        bossLoop()
-    }
-
-    if (round === 5 || round === 6) {
+    if (round != 1 && round != 2) {
 
         speedIncrease = 1000
 
         bossLoop()
     }
+
+    else bossLoop()
 
 }
 
@@ -459,7 +492,7 @@ function playerPhaseTwo() {
 
             spanRound.textContent = `ROUND ${round + 1}`
 
-            
+
 
         }
 
@@ -471,13 +504,13 @@ function playerPhaseThree() {
 
     timesFinalBossShooted += 1
 
-    spanHealthBoss.textContent =`FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
+    spanHealthBoss.textContent = `FINAL BOSS HEALTH: ${bossHealth - timesFinalBossShooted}`
 
     if ((bossHealth - timesFinalBossShooted) === 0) {
 
         alert("YOU WIN")
 
-        window.location ="ranking.html"
+        window.location = "ranking.html"
 
     }
 
@@ -489,7 +522,7 @@ start.addEventListener(("click"), () => {
     gameIsRunning = true
 
     start.disabled = true
-   
+
     start.style.background = "orange"
 
     if (phase === 0 || phase === 1) loopPhaseOne()
@@ -532,15 +565,3 @@ finalBoss.addEventListener(("click"), () => {
 
 
 
-
-
-
-
-const bossThreat = "X"
-
-
-
-
-allDivsBoss[2].appendChild(bossStaring)
-
-   eagleCry.play()
