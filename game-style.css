@@ -6,7 +6,7 @@
 body {
     background-image: url(Stages/Jungle/Jungle.jpg);
     cursor: crosshair;
-    
+
 }
 
 
@@ -21,11 +21,10 @@ span {
     visibility: hidden;
 }
 
-.fish
-{
+.fish {
     position: absolute;
     top: 590px;
-    left: 290px; 
+    left: 290px;
     width: 80px;
     height: 80px;
 }
@@ -44,7 +43,7 @@ span {
     left: 600px;
     height: 60px;
     width: 190px;
-    transform: rotate(20deg);   
+    transform: rotate(20deg);
 }
 
 .jaguar {
@@ -58,10 +57,10 @@ span {
 .hippo {
     position: absolute;
     top: 400px;
-    left: 1200px; 
+    left: 1200px;
     width: 250px;
     height: 250px;
-   
+
 }
 
 .macaque {
@@ -93,13 +92,27 @@ span {
 .health-boss,
 .health-player {
     visibility: hidden;
+    position: absolute;
+    background-color:green;
 }
 
-.boss{
+
+
+.health-player {
+    top: 0px;
+    right: 0px;
+}
+
+.health-boss {
+    top: 0px;
+    right: 180px;
+}
+
+.boss {
     border: thin solid red;
     visibility: hidden;
     width: 10px;
-    height: 10px;  
+    height: 10px;
 }
 
 .one {
@@ -111,10 +124,10 @@ span {
 
 .two {
     position: absolute;
-    left: 500px ;
+    left: 500px;
 }
 
-.three{
+.three {
     position: absolute;
     left: 50px;
     top: 200px;
@@ -129,11 +142,11 @@ span {
 .five {
     position: absolute;
     left: 800px;
-    top: 200px ;
+    top: 200px;
 }
 
 .six {
     position: absolute;
-    left: 800px; 
+    left: 800px;
     top: 300px;
 }
