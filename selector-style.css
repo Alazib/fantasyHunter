@@ -1,9 +1,21 @@
 .character {
     border: thin solid black;
-    padding: 30px;
     margin-top: 5px;
-    width: 90px;
-    text-align: center;
+    width: fit-content;
+}
+
+.one {
+    width: 190px;
+}
+
+.two {
+    width: 190px;
+    height: 230px;
+    
+}
+
+.three {
+    width: 190px;
 }
 
 .weapons {

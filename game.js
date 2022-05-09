@@ -17,15 +17,15 @@ const shoot = document.querySelector(".shoot")
 const eagleCry = document.querySelector(".eagle")
 
 const bossStaring = document.createElement("img")
-bossStaring.src = "Boss Head.png"
+bossStaring.src = "Stages/Jungle/Animals/Boss/Boss Head.png"
 bossStaring.style.visibility = "visible"
 
 const bossProfile = document.createElement("img")
-bossProfile.src = "Boss Profile.png"
+bossProfile.src = "Stages/Jungle/Animals/Boss/Boss Profile.png"
 bossProfile.style.visibility = "visible"
 
 const finalBoss = document.createElement("img")
-finalBoss.src = "Boss Front.png"
+finalBoss.src = "Stages/Jungle/Animals/Boss/Boss Front.png"
 finalBoss.style.visibility = "visible"
 
 let round = 0
@@ -36,7 +36,7 @@ let orderOfPlayerShoots = []
 
 let orderOfAppearance = []
 
-let phase = 0
+let phase = 3
 
 let gameIsRunning = false
 
@@ -359,7 +359,7 @@ function loopPhaseThree() {
 
     }
 
-   bossLoop()
+    bossLoop()
 
 }
 
@@ -563,7 +563,17 @@ allImages.forEach((image) => {
 
         shootCloned.play()
 
-        image.style.visibility = "hidden"
+        image.classList.add("barrelRoll")
+
+        setTimeout(() => {
+
+            image.classList.remove("barrelRoll")
+
+            image.style.visibility = "hidden"
+
+        }, 700);
+
+
 
         orderOfPlayerShoots.push(image.classList[1])
 
@@ -577,7 +587,7 @@ finalBoss.addEventListener(("click"), () => {
 
     const shootCloned = shoot.cloneNode(true)
 
-        shootCloned.play()
+    shootCloned.play()
 
     if (phase === 3) playerPhaseThree()
 

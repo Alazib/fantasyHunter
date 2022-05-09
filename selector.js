@@ -26,22 +26,25 @@ allCharacters.forEach((character) => {
     character.addEventListener(("mouseout"), () => {
 
         character.style.background = "white"
-   
+
     })
 
     character.addEventListener(("click"), () => {
 
-        player.character = character
-        characterSelected.textContent = player.character.className
-        characterSelected.style.background = "yellow"
+        player.character = character.alt
+        characterSelected.textContent = ""
+        characterSelected.appendChild(character.firstChild.cloneNode(true))
+        characterSelected.style.height = "auto"
         characterSelected.classList.add("shake")
-        
+
         setTimeout(() => {
             characterSelected.classList.remove("shake")
         }, 100);
-        
+
     })
+
 })
+
 
 allWeapons.forEach((weapon) => {
 
@@ -55,7 +58,7 @@ allWeapons.forEach((weapon) => {
 
         weapon.style.background = "white"
     })
-    
+
     weapon.addEventListener(("click"), () => {
 
         player.weapon = weapon
@@ -63,23 +66,24 @@ allWeapons.forEach((weapon) => {
         weaponSelected.style.background = "aqua"
 
         weaponSelected.classList.add("shake")
-        
+
         setTimeout(() => {
             weaponSelected.classList.remove("shake")
         }, 100);
-        
+
     })
 })
 
-goToGame.addEventListener(("click"), ()=> {
+goToGame.addEventListener(("click"), () => {
 
-    if (player.character != undefined && player.weapon != undefined) window.location = "game.html"
-    else {alert("Choose character and weapon!")}
+    player.playerName = input.value
 
-    
+    if (player.character != undefined && player.weapon != undefined && input.value != "") window.location = "game.html"
+    else { alert("Choose character, weapon and player name!") }
+
+
+
+
 })
-
-
-
 
 
