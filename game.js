@@ -28,7 +28,6 @@ const finalBoss = document.createElement("img")
 finalBoss.src = "Boss Front.png"
 finalBoss.style.visibility = "visible"
 
-
 let round = 0
 
 let maxRounds = allImages.length
@@ -262,7 +261,7 @@ function loopPhaseThree() {
 
     let additionOfTimeToInterval = 0
 
-    let speedIncrease = 1500
+    let speedIncrease = 1000
 
     let divWithBossAppended = []
 
@@ -360,14 +359,7 @@ function loopPhaseThree() {
 
     }
 
-    if (round != 1 && round != 2) {
-
-        speedIncrease = 1000
-
-        bossLoop()
-    }
-
-    else bossLoop()
+   bossLoop()
 
 }
 
@@ -567,7 +559,9 @@ allImages.forEach((image) => {
 
         if (gameIsRunning) return
 
-        shoot.play()
+        const shootCloned = shoot.cloneNode(true)
+
+        shootCloned.play()
 
         image.style.visibility = "hidden"
 
@@ -581,5 +575,10 @@ allImages.forEach((image) => {
 
 finalBoss.addEventListener(("click"), () => {
 
+    const shootCloned = shoot.cloneNode(true)
+
+        shootCloned.play()
+
     if (phase === 3) playerPhaseThree()
+
 })
