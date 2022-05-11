@@ -1,16 +1,23 @@
 body {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-content: center; 
+    background-image: url(Background-index.jpg);
+    background-position: 100%;
 }
 
 
 button {
 height: 300px;
 width: 300px;
-margin-top: 160px;
 border-radius: 100%;
 background-color: rgba(113, 137, 41, 0.4);
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: beige;
+position: relative;
+left: 275px;
+top: 60px;
 }
+
+button:hover{
+    background-color: rgba(113, 137, 41, 0.7);
+    cursor: crosshair;
+}
+

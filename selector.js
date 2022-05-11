@@ -14,19 +14,10 @@ const player = {
 
 allCharacters.forEach((character) => {
 
-    character.addEventListener(("mouseover"), () => {
-
-        character.style.background = "yellow"
-    })
-
-    character.addEventListener(("mouseout"), () => {
-
-        character.style.background = "white"
-
-    })
-
+    
     character.addEventListener(("click"), () => {
 
+        input.style.top = "300px"
         characterSelected.textContent = ""
         characterImageCLoned = character.firstChild.cloneNode(true)
         characterSelected.appendChild(characterImageCLoned)
