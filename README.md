@@ -1,6 +1,6 @@
 # fantasyHunter
 
-[1.0] First Version
+<h1>[1.0] First Version</h1>
 
 <h2>Added</h2>
 
