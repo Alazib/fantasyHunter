@@ -48,6 +48,22 @@ let playerHealth = 60
 
 finalBossThreat()
 
+function playerWinMission () {
+    alert("WIN desde Funcion")
+    start.disabled = false
+    start.style.background = "yellowgreen"
+    start.textContent = `Continue`
+    spanRound.textContent = `ROUND ${round + 1}`
+}
+
+function playerLoseMission () {
+    alert("LOSE esde Funcion")
+    start.disabled = false
+    start.style.background = "crimson"
+    start.textContent = `Try round ${round} again`
+    round -= 1
+}
+
 function finalBossThreat() {
 
     setTimeout(() => {
@@ -97,12 +113,7 @@ function finalBossThreat() {
     eagleCry.play()
 }
 
-function randomize() {
 
-    const randomNumber = Math.round((Math.random() * (allImages.length - 1)))
-
-    return randomNumber
-}
 
 function loopPhaseOne() {
 
@@ -120,12 +131,11 @@ function loopPhaseOne() {
 
 
         setTimeout(() => {
-
-            let randomImage = allImages[randomize()]
+            let randomImage = allImages[randomize(allImages.length)]
 
             while (orderOfAppearance.includes(randomImage.classList[1])) {
 
-                randomImage = allImages[randomize()]
+                randomImage = allImages[randomize(allImages.length)]
             }
 
             orderOfAppearance.push(randomImage.classList[1])
@@ -215,11 +225,11 @@ function loopPhaseTwo() {
 
         setTimeout(() => {
 
-            let randomImage = allImages[randomize()]
+            let randomImage = allImages[randomize(allImages.length)]
 
             while (orderOfAppearance.includes(randomImage.classList[1])) {
 
-                randomImage = allImages[randomize()]
+                randomImage = allImages[randomize(allImages.length)]
             }
 
             orderOfAppearance.push(randomImage.classList[1])
@@ -377,22 +387,12 @@ function playerPhaseOne() {
 
             return prev + current
         })
-
         if (orderOfAppearanceReduced === orderOfPlayerShootsReduced) {
+            playerWinMission()
 
-            alert("WIN")
-            start.disabled = false
-            start.style.background = "yellowgreen"
-            start.textContent = `Continue`
-            spanRound.textContent = `ROUND ${round + 1}`
         }
         else {
-            alert("LOSE")
-            start.disabled = false
-            start.style.background = "crimson"
-            start.textContent = `Try round ${round} again`
-            round -= 1
-
+            playerLoseMission()
         }
 
 
@@ -471,20 +471,9 @@ function playerPhaseTwo() {
         })
 
         if (orderOfAppearanceReduced === orderOfPlayerShootsReduced) {
-
-            alert("WIN")
-            start.disabled = false
-            start.style.background = "yellowgreen"
-            start.textContent = `Continue`
-            spanRound.textContent = `ROUND ${round + 1}`
-        }
-        else {
-            alert("LOSE")
-            start.disabled = false
-            start.style.background = "crimson"
-            start.textContent = `Try round ${round} again`
-            round -= 1
-
+            playerWinMission()
+        } else {
+            playerLoseMission()
         }
 
 
