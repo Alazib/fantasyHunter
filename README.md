@@ -10,6 +10,8 @@
 
 - PANTALLA DE JUEGO: <br>- Button "START" para iniciar cada ronda <br>- Marcador de fases <br>- Marcador de rondas <br>- Un escenario fijo de jungla con río <br>- Sonido ambiental de jungla <br>- Breve aparición del enemigo final al inicio del juego (grito de águila + 2 .png de águila) <br> - 8 animales diferentes para cazar: anaconda, cocodrilo, pez, hipopótamo, jaguar, macaco, búho y tucán <br>- Sonido de disparo al hacer click en un animal
 
+- MECÁNICA FASES-RONDAS: <br>-
+
 
 <h2>Changed</h2>
 
