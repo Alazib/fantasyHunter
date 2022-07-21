@@ -4,8 +4,9 @@
 
 <h2>Added</h2>
 
-- PANTALLA DE INICIO:<br>- Fondo bosque <br>- Start button flotante esperando a ser disparado
-- PANTALLA DE SELECCICÓN DE PERSONAJE:<br>- Fondo catarata <br>- 9 personajes disponibles <br>- Selección con ratón <br>- Input para nombre del jugador
+- PANTALLA DE INICIO:<br>- Fondo bosque <br>- Start button flotante para disparar
+- PANTALLA DE SELECCICÓN DE PERSONAJE:<br>- Fondo catarata <br>- Música de fondo <br>- 9 personajes disponibles <br>- Selección con ratón <br>- Input para nombre del jugador
+- PANTALLA DE JUEGO:<br>-Amenaza del enemigo final (águila) al inicio del juego
 
 
 <h2>Changed</h2>
