@@ -4,9 +4,8 @@
 
 <h2>Added</h2>
 
-- Añadido 3 niveles de dificultad
-- 8 monstruos diferentes
-- Seleccion de personaje
+- PANTALLA DE INICIO:<br>- Fondo bosque .jpg<br>- Start button flotante esperando a ser disparado
+- PANTALLA DE SELECCICÓN DE PERSONAJE:<br>
 - 10 personajes disponibles
 
 <h2>Changed</h2>
