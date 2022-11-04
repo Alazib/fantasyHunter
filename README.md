@@ -1,25 +1,9 @@
-# fantasyHunter
 
-<h1>[1.0] First Version</h1>
+Fantasy Hunter was the 1st project of my Bootcamp as a Front End Developer.
 
-<h2>Added</h2>
+Created in HTML, CSS3 and JavaScript Vanilla.
 
-- PANTALLA DE INICIO:<br>- Imagen de fondo de bosque <br>- Button flotante "Fantasy Hunter" para ir a selección de personaje <br>- Sonido de disparo al hacer click en el botón "Fantasy Hunter"
+This app is a video game made with the purpose of training visual memory and reflexes.
 
-- PANTALLA DE SELECCIÓN DE PERSONAJE:<br>- Imagen de fondo de bosque con catarata <br>- Música de fondo <br>- 9 personajes disponibles <br>- Selección con ratón <br>- Input para nombre del jugador <br>- Ventana central desplegable para mostrar personaje seleccionado y nombre del jugador <br>- Button "Go to game" para comenzar a jugar
-
-- PANTALLA DE JUEGO: <br>- Button "START" para iniciar cada ronda <br>- Marcador de fases <br>- Marcador de rondas <br>- Un escenario fijo de jungla con río <br>- Sonido ambiental de jungla <br>- Breve aparición del enemigo final al inicio del juego (grito de águila + 2 .png de águila) <br> - 8 animales diferentes para cazar: anaconda, cocodrilo, pez, hipopótamo, jaguar, macaco, búho y tucán <br>- Sonido de disparo al hacer click en un animal
-
-- MECÁNICA FASES-RONDAS: <br>- 3 fases en total <br>- Fase 1: consta de 8 rondas. En cada ronda aparece un animal nuevo. Intervalo de tiempo entre cada aparición de animales: <ul><li>Ronda 1 a 8: 1000 milisegundos</li></ul><br>- Fase 2: igual a fase 1. Cambian los intervalos de tiempo entre apariciones: <ul><li>Ronda 1 y 2: 1000 milisegundos</li><li>Ronda 3 y 4: 850 milisegundos</li><li>Ronda 5 y 6: 800 milisegundos</li><li>Ronda 7 y 8: 750 milisegundos</li></ul><br> - Fase 3: jefe fin de juego. Consta de 5 rondas.
-
-
-
-<h2>Changed</h2>
-
-Nada
-
-<h2>Fixed</h2>
-
-Nada
 
 
