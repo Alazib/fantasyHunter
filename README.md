@@ -7,7 +7,7 @@ This app is a Simon Says-based video game but with more complexity. It was made 
 
 How to run it?
 
-    1.Double click to the index.htlm file
+    1.Double click on the index.htlm file
 
 
 
